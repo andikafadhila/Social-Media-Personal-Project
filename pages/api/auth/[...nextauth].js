@@ -11,26 +11,6 @@ export default NextAuth({
     // ...add more providers here
   ],
 
-  callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      // console.log(user, account);
-      return "/";
-    },
-    async session({ session, user, token }) {
-      // console.log(session, user, token);
-      // session.accessToken = token.accessToken;
-      return session;
-    },
-    async jwt({ token, user, account, profile, isNewUser }) {
-      // token.accessToken = account.access_token;
-      console.log("profile", profile);
-      console.log("account", account);
-      console.log("token", token);
-      console.log("user", user);
-      token.userRole = "admin";
-      return token;
-    },
-  },
   pages: {
     signIn: "/auth/signin",
   },

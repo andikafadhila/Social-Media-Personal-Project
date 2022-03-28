@@ -1,10 +1,18 @@
-import {
-  getProviders,
-  getSession,
-  signIn as SignIntoProvider,
-} from "next-auth/react";
+import { getProviders, signIn as SignIntoProvider } from "next-auth/react";
+
 // Browser
 function signIn({ providers }) {
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+    bio: "",
+    facebook: "",
+    youtube: "",
+    twitter: "",
+    instagram: "",
+  });
+
   return (
     <>
       {Object.values(providers).map((provider) => (
@@ -19,13 +27,12 @@ function signIn({ providers }) {
 }
 
 //Server
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const providers = await getProviders();
 
   return {
     props: {
       providers,
-      session: await getSession(context),
     },
   };
 }

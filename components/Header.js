@@ -13,8 +13,7 @@ import { useSession } from "next-auth/react";
 function Header() {
   const { data: session } = useSession();
 
-  console.log("session", session);
-
+  console.log(session);
   return (
     <div className="shadow-sm border-b bg-white sticky top-0 z-10">
       <div className="flex justify-between max-w-6xl bg-white mx-5 xl:mx-auto">
@@ -65,7 +64,7 @@ function Header() {
           <HeartIcon className="navBtn" />
 
           <img
-            src="https://foto.wartaekonomi.co.id/files/arsip_foto_2019_11_16/otomotif_215524_small.webp"
+            src={session.user?.image}
             alt="profile picture"
             className="h-10 w-10 object-cover rounded-full cursor-pointer"
           />
